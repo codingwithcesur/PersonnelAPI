@@ -33,7 +33,7 @@ app.all("/", (req, res) => {
 
 /* ---------------------------------- */
 // Error handler
-app.use(require("./middlewares/errorHandler"));
+app.use(require("./src/middlewares/errorHandler"));
 
 /* ---------------------------------- */
 // Run server
