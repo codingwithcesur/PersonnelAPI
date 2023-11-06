@@ -14,6 +14,7 @@ module.exports = {
     const data = await Personnel.create(req.body);
     res.status(201).send({
       error: false,
+      detail: await res.getModelListDetails(Personnel),
       data,
     });
   },
