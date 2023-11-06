@@ -31,6 +31,8 @@ app.all("/", (req, res) => {
   });
 });
 
+// Department
+app.use("/departments", require("./src/routes/department.router"));
 /* ---------------------------------- */
 // Error handler
 app.use(require("./src/middlewares/errorHandler"));

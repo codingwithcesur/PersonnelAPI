@@ -10,6 +10,7 @@ router
   .route("/:id")
   .get(department.read)
   .put(department.update)
+  .patch(department.update)
   .delete(department.delete);
 /* ------------------------------------------------------- */
 module.exports = router;
