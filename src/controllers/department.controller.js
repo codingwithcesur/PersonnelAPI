@@ -11,7 +11,7 @@ module.exports = {
     });
   },
   create: async (req, res) => {
-    const data = await res.createModel(Department, req.body);
+    const data = await Department.create(req.body);
     res.status(201).send({
       error: false,
       data,
