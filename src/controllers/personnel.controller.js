@@ -7,6 +7,7 @@ module.exports = {
     const data = await res.getModelList(Personnel);
     res.status(200).send({
       error: false,
+      detail: await res.getModelListDetails(Personnel),
       data,
     });
   },
@@ -14,7 +15,7 @@ module.exports = {
     const data = await Personnel.create(req.body);
     res.status(201).send({
       error: false,
-      detail: await res.getModelListDetails(Personnel),
+
       data,
     });
   },
