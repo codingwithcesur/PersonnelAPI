@@ -37,26 +37,8 @@ app.use(require("./src/middlewares/findSearchSortPage"));
 //   next();
 // });
 
-// JWT login
-const jwt = require("jsonwebtoken");
-app.use((req, res, next) => {
-  const auth = req.headers?.authorization || null; // get auth
-  const accessToken = auth ? auth.split(" ")[1] : null; // get token (jwt)
-
-  req.isLogin = false;
-  jwt.verify(accessToken, process.env.ACCESS_KEY, function (err, user) {
-    if (err) {
-      req.user = null;
-      console.log("Jwt login: not login");
-    } else {
-      req.isLogin = true;
-      req.user = user;
-      console.log("Jwt login: Login success");
-    }
-  });
-  next();
-});
-
+// For login, logout (new using jwt)
+app.use(require("./src/middlewares/authentication"));
 /* ---------------------------------- */
 // Routes
 // Home
