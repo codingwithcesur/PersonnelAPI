@@ -29,7 +29,13 @@ module.exports = {
         } else {
           res.send(checkUser);
         }
+      } else {
+        res.errorStatusCode = 401;
+        throw new Error("Invalid refresh token");
       }
+    } else {
+      res.errorStatusCode = 401;
+      throw new Error("Please enter refresh token");
     }
   },
   logout: async (req, res) => {
