@@ -9,11 +9,11 @@ module.exports = (req, res, next) => {
   jwt.verify(accessToken, process.env.ACCESS_KEY, function (err, user) {
     if (err) {
       req.user = null;
-      console.log("Jwt login: not login");
+      // console.log("Jwt login: not login");
     } else {
       req.isLogin = true;
       req.user = user;
-      console.log("Jwt login: Login success");
+      // console.log("Jwt login: Login success");
     }
   });
   next();

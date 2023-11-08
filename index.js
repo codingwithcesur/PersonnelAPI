@@ -14,6 +14,25 @@ dbConnection();
 
 /* ---------------------------------- */
 // Middlewares
+
+// Logger
+const morgan = require("morgan");
+// app.use(
+//   morgan(
+//     'IP: :remote-addr - :remote-user ****** TIME: [:date[clf]] ****** REQ: ":method :url HTTP/:http-version" ****** RES: :status :res[content-length] ****** APP: ":referrer" ":user-agent"'
+//   )
+// );
+
+// Logger to file
+const fs = require("node:fs");
+const now = new Date();
+const today = now.toISOString().split("T")[0];
+app.use(
+  morgan("combined", {
+    stream: fs.createWriteStream(`./logs/${today}.log`, { flags: "a" }),
+  })
+);
+
 app.use(express.json());
 
 app.use(require("cookie-session")({ secret: process.env.SECRET_KEY }));
