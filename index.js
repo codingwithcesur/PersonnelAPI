@@ -49,6 +49,8 @@ app.all("/", (req, res) => {
   });
 });
 
+// Auth
+app.use("/auth", require("./src/routes/auth.router"));
 // Department
 app.use("/departments", require("./src/routes/department.router"));
 // Personnel
