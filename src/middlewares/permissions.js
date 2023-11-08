@@ -35,10 +35,7 @@ module.exports = {
 
   isAdminOrOwner: (req, res, next) => {
     const userId = req.params?.id || null;
-    if (
-      req.user &&
-      (req.user.isAdmin || (req.user._id == userId && req.method != "DELETE"))
-    ) {
+    if (req.user && (req.user.isAdmin || req.user._id == userId)) {
       next();
     } else {
       res.errorStatusCode = 403;
