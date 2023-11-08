@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const checkUserAndSetToken = require("../helpers/checkUserAndSetToken");
 module.exports = {
   login: async (req, res) => {
-    const checkUser = checkUserAndSetToken(req.body);
+    const checkUser = await checkUserAndSetToken(req.body);
     if (checkUser.error) {
       res.errorStatusCode = 401;
       throw new Error(checkUser.message);
