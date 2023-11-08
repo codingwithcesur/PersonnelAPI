@@ -64,3 +64,6 @@ app.use(require("./src/middlewares/errorHandler"));
 app.listen(PORT, () => {
   console.log(`Server is running: http://127.0.0.1:${PORT}`);
 });
+
+// Sync database
+// require("./src/helpers/sync")();
