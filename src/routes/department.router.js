@@ -17,6 +17,6 @@ router
   .patch(permissions.isAdminOrLead, department.update)
   .delete(permissions.isAdmin, department.delete);
 
-router.get("/:id/personnels", department.personnels);
+router.get("/:id/personnels", permissions.isAdminOrLead, department.personnels);
 /* ------------------------------------------------------- */
 module.exports = router;

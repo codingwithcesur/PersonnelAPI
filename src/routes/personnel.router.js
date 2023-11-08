@@ -3,6 +3,7 @@
 const router = require("express").Router();
 /* ------------------------------------------------------- */
 const personnel = require("../controllers/personnel.controller");
+const permissions = require("../middlewares/permissions");
 
 // URL: /personnels
 
