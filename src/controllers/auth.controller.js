@@ -22,7 +22,7 @@ module.exports = {
     if (refreshToken) {
       const jwtData = jwt.verify(refreshToken, process.env.REFRESH_KEY);
       if (jwtData) {
-        const checkUser = checkUserAndSetToken(req.body);
+        const checkUser = await checkUserAndSetToken(req.body);
         if (checkUser.error) {
           res.errorStatusCode = 401;
           throw new Error(checkUser.message);
