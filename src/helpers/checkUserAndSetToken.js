@@ -1,10 +1,13 @@
 "use strict";
 
-module.exports = async function (userData) {
+const jwt = require("jsonwebtoken");
+const Personnel = require("../models/personnel.model");
+
+module.exports = async function (userData, withRefresh = true) {
   const { username, password } = userData;
   if (username && password) {
-    const user = await Personnel.findOne({ username, password });
-    if (user) {
+    const user = await Personnel.findOne({ username });
+    if (user && user.password == password) {
       if (user.isActive) {
         // Login success
         const accessData = {
@@ -24,9 +27,11 @@ module.exports = async function (userData) {
           username: user.username,
           password: user.password,
         };
-        const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, {
-          expiresIn: "3d",
-        });
+        const refreshToken = withRefresh
+          ? jwt.sign(refreshData, process.env.REFRESH_KEY, {
+              expiresIn: "3d",
+            })
+          : null;
 
         return {
           error: false,
