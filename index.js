@@ -21,19 +21,39 @@ app.use(require("cookie-session")({ secret: process.env.SECRET_KEY }));
 // For search, sort, pagination
 app.use(require("./src/middlewares/findSearchSortPage"));
 
-// For login, logout
-app.use(async (req, res, next) => {
-  const Personnel = require("./src/models/personnel.model");
+// For login, logout (old using cookie-session)
+// app.use(async (req, res, next) => {
+//   const Personnel = require("./src/models/personnel.model");
+
+//   req.isLogin = false;
+
+//   if (req.session?.id) {
+//     const user = await Personnel.findOne({ _id: req.session.id });
+
+//     req.isLogin = user.password == req.session.password;
+//   }
+//   console.log("isLogin: ", req.isLogin);
+
+//   next();
+// });
+
+// JWT login
+const jwt = require("jsonwebtoken");
+app.use((req, res, next) => {
+  const auth = req.headers?.authorization || null; // get auth
+  const accessToken = auth ? auth.split(" ")[1] : null; // get token (jwt)
 
   req.isLogin = false;
-
-  if (req.session?.id) {
-    const user = await Personnel.findOne({ _id: req.session.id });
-
-    req.isLogin = user.password == req.session.password;
-  }
-  console.log("isLogin: ", req.isLogin);
-
+  jwt.verify(accessToken, process.env.ACCESS_KEY, function (err, user) {
+    if (err) {
+      req.user = null;
+      console.log("Jwt login: not login");
+    } else {
+      req.isLogin = true;
+      req.user = user;
+      console.log("Jwt login: Login success");
+    }
+  });
   next();
 });
 
@@ -44,8 +64,9 @@ app.all("/", (req, res) => {
   res.send({
     error: false,
     message: "Welcome to Personnel API",
-    session: req.session,
+    // session: req.session, // old using cookie-session
     isLogin: req.isLogin,
+    user: req.user,
   });
 });
 
