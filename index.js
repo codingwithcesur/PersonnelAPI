@@ -86,6 +86,13 @@ app.all("/", (req, res) => {
   res.send({
     error: false,
     message: "Welcome to Personnel API",
+    api: {
+      docs: {
+        json: "/docs/json",
+        swagger: "/docs/swagger",
+        redoc: "/docs/redoc",
+      },
+    },
     // session: req.session, // old using cookie-session
     isLogin: req.isLogin,
     user: req.user,
