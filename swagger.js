@@ -31,6 +31,27 @@ const document = {
     },
   },
   security: [{ JWT: true }],
+  definition: {
+    "/auth/login": {
+      username: {
+        type: "String",
+        required: true,
+      },
+      password: {
+        type: "String",
+        required: true,
+      },
+    },
+    "/auth/refresh": {
+      "token.refresh": {
+        description: "{ token: { refresh: ... } }",
+        type: "String",
+        required: true,
+      },
+    },
+    Department: require("./src/models/department.model").schema.obj,
+    Personnel: require("./src/models/personnel.model").schema.obj,
+  },
 };
 
 const routes = ["./index.js"];

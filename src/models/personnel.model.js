@@ -20,6 +20,8 @@ const PersonnelSchema = new mongoose.Schema(
       trim: true,
       required: true,
       unique: true,
+      dataType: "string",
+      example: "'username': 'test'",
     },
 
     password: {
