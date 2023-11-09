@@ -58,6 +58,18 @@ app.use(require("./src/middlewares/findSearchSortPage"));
 
 // For login, logout (new using jwt)
 app.use(require("./src/middlewares/authentication"));
+
+// Swagger-UI
+const swaggerUi = require("swagger-ui-express");
+const swaggerJson = require("./swagger.json");
+// Parse/Run swagger.json and publish on any URL:
+app.use(
+  "/docs/swagger",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerJson, {
+    swaggerOptions: { persistAuthorization: true },
+  })
+);
 /* ---------------------------------- */
 // Routes
 // Home
@@ -77,6 +89,7 @@ app.use("/auth", require("./src/routes/auth.router"));
 app.use("/departments", require("./src/routes/department.router"));
 // Personnel
 app.use("/personnels", require("./src/routes/personnel.router"));
+
 /* ---------------------------------- */
 // Error handler
 app.use(require("./src/middlewares/errorHandler"));

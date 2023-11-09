@@ -1,15 +1,16 @@
 {
+  "title": "Personnel API",
   "name": "personnelapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personnel Management System",
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
     "debug": "DEBUG=* nodemon"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Clarusway",
+  "license": "BSD License",
   "dependencies": {
     "cookie-session": "^2.0.0",
     "dotenv": "^16.3.1",
@@ -17,6 +18,8 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   }
 }
