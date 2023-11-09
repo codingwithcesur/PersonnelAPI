@@ -21,7 +21,7 @@ const PersonnelSchema = new mongoose.Schema(
       required: true,
       unique: true,
       dataType: "string",
-      example: "'username': 'test'",
+      example: "username: test",
     },
 
     password: {

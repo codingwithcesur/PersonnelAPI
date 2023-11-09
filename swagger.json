@@ -548,7 +548,7 @@
             },
             "example": {
               "type": "string",
-              "example": "'username': 'test'"
+              "example": "username: test"
             }
           }
         },
@@ -727,7 +727,7 @@
             },
             "default": {
               "type": "number",
-              "example": 1699560312175
+              "example": 1699560378939
             }
           }
         }
