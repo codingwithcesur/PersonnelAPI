@@ -9,6 +9,11 @@ const jwt = require("jsonwebtoken");
 const checkUserAndSetToken = require("../helpers/checkUserAndSetToken");
 module.exports = {
   login: async (req, res) => {
+    /*
+    #swagger.tags = ["Authentication"]
+    #swagger.summary = "JWT Login"
+    #swagger.description = "Login using username and password"
+    */
     const checkUser = await checkUserAndSetToken(jwtData);
     if (checkUser.error) {
       res.errorStatusCode = 401;
@@ -18,6 +23,11 @@ module.exports = {
     }
   },
   refresh: async (req, res) => {
+    /*
+    #swagger.tags = ["Authentication"]
+      #swagger.summary = "JWT Refresh"
+       #swagger.description = "Refresh token"
+    */
     const refreshToken = req.body?.token?.refresh || null;
     if (refreshToken) {
       const jwtData = jwt.verify(refreshToken, process.env.REFRESH_KEY);
@@ -39,6 +49,11 @@ module.exports = {
     }
   },
   logout: async (req, res) => {
+    /*
+    #swagger.tags = ["Authentication"]
+      #swagger.summary = "JWT Logout"
+       #swagger.description = "Logout"
+    */
     res.send({
       error: false,
       message: "Logout success",

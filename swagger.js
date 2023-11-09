@@ -10,12 +10,12 @@ const packageJson = require("./package.json");
 
 const document = {
   info: {
-    version: "packageJson.version",
-    title: "packageJson.title",
-    description: "packageJson.description",
+    version: packageJson.version,
+    title: packageJson.title,
+    description: packageJson.description,
     termsOfService: "http://www.clarusway.com",
-    contact: { name: "packageJson.author", email: "qadir@clarusway.com" },
-    license: { name: "packageJson.license" },
+    contact: { name: packageJson.author, email: "qadir@clarusway.com" },
+    license: { name: packageJson.license },
   },
   host: `${HOST}:${PORT}`,
   basePath: "/",

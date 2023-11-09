@@ -1,16 +1,16 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "packageJson.version",
-    "title": "packageJson.title",
-    "description": "packageJson.description",
+    "version": "1.0.0",
+    "title": "Personnel API",
+    "description": "Personnel Management System",
     "termsOfService": "http://www.clarusway.com",
     "contact": {
-      "name": "packageJson.author",
+      "name": "Clarusway",
       "email": "qadir@clarusway.com"
     },
     "license": {
-      "name": "packageJson.license"
+      "name": "BSD License"
     }
   },
   "host": "127.0.0.1:8000",
@@ -30,7 +30,11 @@
   "paths": {
     "/auth/login": {
       "post": {
-        "description": "",
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "JWT Login",
+        "description": "Login using username and password",
         "responses": {
           "200": {
             "description": "OK"
@@ -40,7 +44,11 @@
     },
     "/auth/refresh": {
       "post": {
-        "description": "",
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "JWT Refresh",
+        "description": "Refresh token",
         "responses": {
           "200": {
             "description": "OK"
@@ -50,7 +58,11 @@
     },
     "/auth/logout": {
       "get": {
-        "description": "",
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "JWT Logout",
+        "description": "Logout",
         "responses": {
           "200": {
             "description": "OK"
