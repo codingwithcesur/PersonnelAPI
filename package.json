@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.0",
     "morgan": "^1.10.0",
+    "redoc-express": "^2.1.0",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.0"
   }

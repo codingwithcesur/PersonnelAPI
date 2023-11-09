@@ -70,6 +70,15 @@ app.use(
     swaggerOptions: { persistAuthorization: true },
   })
 );
+// Redoc-UI
+const redoc = require("redoc-express");
+app.use("/docs/json", (req, res) => {
+  res.sendFile("./swagger.json"), { root: "." };
+});
+app.use(
+  "/docs/redoc",
+  redoc({ specUrl: "/docs/json", title: "API Documentation" })
+);
 /* ---------------------------------- */
 // Routes
 // Home
